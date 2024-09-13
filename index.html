@@ -123,10 +123,16 @@
                 type="image/png">
       </image> -->
       <div style="display: flex; justify-content: center; align-items: center;">
-        <img id="rabbit" src="./static/videos/rabbitanimation.gif" height="50%" width="50%" />
-        <img id="couch" src="./static/videos/couchanimation.gif" height="50%" width="50%" />
-        <img id="moose" src="./static/videos/mooseanimation.gif" height="50%" width="50%" />
-      </div>
+        <video poster="" id="rabbit" autoplay muted loop playsinline height="30%" width="30%">
+            <source src="./static/videos/rabbitanimation.m4v" type="video/mp4">
+        </video>
+        <video poster="" id="couch" autoplay muted loop playsinline height="30%" width="30%">
+            <source src="./static/videos/couchanimation.m4v" type="video/mp4">
+        </video>
+        <video poster="" id="moose" autoplay muted loop playsinline height="30%" width="30%">
+            <source src="./static/videos/mooseanimation.m4v" type="video/mp4">
+        </video>
+      </div> 
       <h2 class="subtitle has-text-centered">
         MeshUp is capable of deforming a source mesh into various concepts and into their weighted blends. The target objectives can
         be text prompts, images, or even meshes. Users can also input a set of control vertices to explicitly define where on the mesh each concept
