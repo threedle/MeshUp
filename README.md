@@ -1,5 +1,5 @@
 # MeshUp
-This is the repository that contains source code for the [MeshUp website](https://threedle.github.io/meshup).
+This is the repository that contains source code for the [MeshUp website](https://threedle.github.io/MeshUp).
 
 If you find MeshUp useful for your work please cite:
 ```
