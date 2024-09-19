@@ -24,4 +24,4 @@ control the expression of these activations. We demonstrate the effectiveness
 of BSD empirically and show that it can deform various meshes towards multiple
 objectives.*
 
-The code will be released soon!
+****The code will be released soon!****
