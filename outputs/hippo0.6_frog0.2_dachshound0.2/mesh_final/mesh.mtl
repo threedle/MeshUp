@@ -1,5 +1,0 @@
-newmtl defaultMat
-bsdf   diffuse
-map_kd texture_kd.png
-map_ks texture_ks.png
-bump texture_n.png

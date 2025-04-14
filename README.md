@@ -94,6 +94,8 @@ python main.py --no-cpu_offload --config ./configs/base_config.yml  --mesh ./mes
 python main.py --no-cpu_offload --config ./configs/base_config.yml  --mesh ./meshes/hound.obj --output_path ./outputs/hippo0.4_frog0.4_dachshound0.2 --model_size XL --dtype float16 --score ActvnReplace --attn_ctrl_alphas 0.4 0.4 0.2 --text_prompt "a hippo" "a frog" "a dachshound" ""
 python main.py --no-cpu_offload --config ./configs/base_config.yml  --mesh ./meshes/hound.obj --output_path ./outputs/hippo0.6_frog0.2_dachshound0.2 --model_size XL --dtype float16 --score ActvnReplace --attn_ctrl_alphas 0.6 0.2 0.2 --text_prompt "a hippo" "a frog" "a dachshound" ""
 ```
+Running the following commands will create an ./outputs path in your working directory, as specified by the --output_path argument. 
+You can check out the results in {output_path}/images/ and exported mesh from {output_path}/images/mesh_final/
 
 <p align="left">
   <img src="https://github.com/threedle/MeshUp/docs/data/hound_deformation.png" width="133px"/>
