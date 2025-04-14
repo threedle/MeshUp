@@ -117,5 +117,3 @@ You can either change the configuration file in configs/base_config.yml or check
       url={https://arxiv.org/abs/2408.14899}, 
 }
 
-
- mv README.md main.py loop.py NeuralJacobianFields/* text_configs/base_config.yml meshes/hound.obj deepfloyd.py ptp_utils.py utilities/* nvdiffmodeling/* .gitignore ../MeshUp
