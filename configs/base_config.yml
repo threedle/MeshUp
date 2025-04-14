@@ -1,0 +1,207 @@
+#output_path: ./text_outputs/turtle_textfusion_learn_bg_100g_25batch_highreg
+#output_path: ./text_outputs/leatherback_inversion_trainedimg_2
+#output_path: ./outputs_texture/bulldog_spot_image_reweight_onlyonethirds
+#output_path: ./outputs_texture/bulldog_spot_image_twothirds_hiddenstates_begin_puddle_attnreplace
+#output_path: ./outputs_attn/spot_null_headinjection_narrow_FIX_bulldog0.turtle0.rabbit
+#output_path: ./outputs_attn/spot_null_headinjectionandscale_injectionall_narrow_bulldog0.6turtle0.4_FIXED
+#output_path: ./outputs_attn/baseprompt_test_frog_to_turtle
+#output_path: ./outputs_attn/lora_interp_test_bulldog_2048_turtle_4_burnin100_noisestart_veryveryverylowlr_replaceconvolve
+#output_path: ./outputs_attn/lora_interp_test_bulldog_4_add_Regulardim
+continue_learn: false
+seed: 8888
+# CLIP-related
+text_prompt: ""
+base_text_prompt: "a 3d rendering"
+clip_model: ViT-B/32
+gpu: 0
+#model to use for image embedding space (clip-vit, dino-vit)
+consistency_clip_model: ViT-B/32
+consistency_vit_stride: 8
+consistency_vit_layer: 11
+image: ./inversion_imgs/puddle/1.png
+#image: ./imgs/turtle4.png
+src_image: .imgs/spot.png
+learn_bg: false
+background: [1.,1.,1.]
+#['dino', 'clip']
+image_encode: clip
+#['hidden', 'key', 'query', 'value']
+facet: hidden
+# Mesh
+mesh: ./meshes/cow.obj
+#only for mds => can specify the base mesh
+base_mesh: null
+mesh_local: null
+#mesh_local: ./meshes/spot_col.ply
+retriangulate: 0
+# Render settings
+bsdf: diffuse
+#Hyper-parameters ("Test" is just for temporary testing)
+#[SDS, ImageScore, MeshScore, Test, DDS, AttnReplace]
+score: AttnReplace
+
+#hyper-params for AttnReplace (only effective when score == AttnReplace)
+#the percentage of replacement
+replace_alpha: 1.
+random_replace: false
+#if this parameter is set to true, then the base of the deformation becomes an identity deformation
+identity_base: true
+
+#if set to true, will use cfg.neg_text_prompt as text condition for the ImageScore target image
+#if negativate textual inversion is set to true, it will load the token for negative inverted token 
+misaligned_prompt: true
+#dds parameter
+#dds_hardcore just overwrites every dds param => base_mesh is updated to target every iteration
+dds_hardcore: false
+dds_burnin: 0
+dds_baseshift: 30000
+#if set to true, we "smoothen" baseshift operation by interpolating the basemesh from some window of intervals
+dds_baseshift_smooth: false
+#the interval for which to randomly interpolate the basemesh
+dds_baseshift_smooth_intv: 25
+#number of smooth intv to interpolate
+dds_baseshift_smooth_num: 20
+#the effect of regularization
+dds_weight: 1.
+#give more or less attention to the token in the base_prompt => only has effect if score == DDS
+attention_weight: 1
+
+#parameter used solely for the purpose of getting figures
+log: false
+negative_prompt: true
+lr: 0.0025
+epochs: 2500
+guidance_scale: 100
+clip_weight: .0
+image_weight: 100.0
+#iter after which to scale down image weight
+image_weight_scale_iter: 25000000
+image_weight_scale: 1e-1
+delta_clip_weight: 0
+delta_image_weight: 1.0
+delta_layers: [5,6,22]
+regularize_jacobians_weight: 50000
+modified_cfg: false
+#regularize_jacobians_weight: 0.5
+consistency_loss_weight: 0
+consistency_elev_filter: 30
+consistency_azim_filter: 20
+batch_size: 8
+#iteration for gradient accumulation
+accum_iter: 2
+train_res: 512
+resize_method: cubic
+# diffusion params
+target_weight: 1
+# Camera parameters
+fov_min: 30.0
+fov_max: 90.0
+# dist_min: 1.4
+# dist_max: 2.6
+# light_power: 5.0
+# elev_alpha: 1.0  
+# elev_beta: 5.0 
+# elev_max: 30.0
+dist_min: 2.5
+dist_max: 3.5
+light_power: 5.0
+elev_alpha: 1.0
+elev_beta: 5.0 
+elev_max: 60.0
+azim_min: 0.0
+azim_max: 360.0
+aug_loc: 0
+aug_light: 1
+aug_bkg: 1
+adapt_dist: 1
+
+log_interval: 5
+log_interval_im: 150
+log_elev: 30.0
+log_fov: 60.0
+log_dist: 3.0
+log_res: 512
+log_light_power: 3.0
+#if true, save mesh obj everytime we save the image
+log_mesh: true
+
+#textual inversion
+textual_inversion: false
+textual_inversion_neg: false
+#whether to train the textual inversion
+train: false
+train_neg: false
+img_dir: ./inversion_imgs/bulldog/
+#load img randomly from the img dir
+random_img: false
+load_emb: false
+load_emb_neg: false
+#could be either string or list 
+emb_path: [embeddings/bulldog.py, embeddings/sea_turtle.py]
+emb_path_neg: embeddings/bulldog_veryless.py
+token: that
+#token_neg: this
+token_neg: this
+render_batch: 4
+from_checkpoint: false
+#learn texture map
+learn_texture: false
+#if true, only learn the texture without optimizing for geometry
+exclusive: false
+texture_lr: 5e-3
+learn_normal: false
+normal_lr: 5e-3
+texture_weight: 10
+texture_burnin: 2400
+texture_iter: 2500
+joint_learn: false
+
+#diffusion
+#["M", "L", "XL"]
+#**always turn cpu_offload off for training dreambooth
+#turn on cpu_offload during inference to fit memory
+model_size: XL
+dtype: float16
+cpu_offload: false
+
+#dreambooth
+dreambooth: false
+train_db: false
+load_db: false
+ckpt_dir: /net/projects/ranalab/brian/ImageFusion/dreambooth/spot_va_onlykey_2
+prior_path: ./priorimages/prior
+#checkpoint name or 'latest'
+ckpt_file: latest
+learn_token: sks
+use_titoken: false
+class_prompt: ""
+style_prompt: ""
+
+#local deformation 
+local_def: 0
+local_sel: ./selection_configs/spot_head_vertices_faces.ply
+local_vert_face_sel: vert
+invert_sel: 0
+
+#TODO: add this to the main fuction
+#local deformation using attn
+local_weight: False
+target_vertice: 171
+weight_variance : 0.5
+
+output_path: ./outputs_attn/cow_test
+#output_path: ./outputs_attn/turtleinjectbulldog0.6
+#output_path: ./outputs_attn/spot_turtle_lora_selfinterp_1024
+#argmuments used for Attninterpolate and AttnReplace
+attn_ctrl: False
+attn_ctrl_prompts: ["turtle","bulldog",""]
+#attn_ctrl_prompts: ["a bulldog", "a turtle", ""]
+#this can either be a list of floats or just floats
+attn_ctrl_alphas: [0.8, 0.2]
+attn_ctrl_alphas_base: [0.8, 0.2]
+lora_rank: [1024]
+
+#parameters for attn interpolation using lora
+attn_interpolate_lora_path: null
+interp_optim_iter: 10
+lora_lr: 1e-5

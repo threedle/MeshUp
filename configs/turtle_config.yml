@@ -1,0 +1,119 @@
+#output_path: ./text_outputs/turtle_textfusion_learn_bg_100g_25batch_highreg
+#output_path: ./text_outputs/leatherback_inversion_trainedimg_2
+output_path: ./text_output/leatherback_texture_burnin
+continue_learn: false
+seed: 99
+# CLIP-related
+#text_prompt: a turtle with uniformly green colored background
+text_prompt: that
+base_text_prompt: ""
+clip_model: ViT-B/32
+gpu: 0
+#model to use for image embedding space (clip-vit, dino-vit)
+consistency_clip_model: ViT-B/32
+consistency_vit_stride: 8
+consistency_vit_layer: 11
+image: ./inversion_imgs/leatherback/1.png
+#image: ./imgs/turtle4.png
+src_image: ./imgs/spot.png
+learn_bg: false
+background: [1.,1.,1.]
+#['dino', 'clip']
+image_encode: clip
+#['hidden', 'key', 'query', 'value']
+facet: hidden
+# Mesh
+mesh: ./meshes/spot.obj
+mesh_local: null
+#mesh_local: ./meshes/spot_col.ply
+retriangulate: 0
+# Render settings
+bsdf: diffuse
+# Hyper-parameters
+#[SDS, ImageScore]
+score: SDS
+dds_burnin: 300
+negative_prompt: true
+lr: 0.0025
+epochs: 3500
+guidance_scale: 100
+clip_weight: .0
+image_weight: 100.0
+delta_clip_weight: 0
+delta_image_weight: 1.0
+delta_layers: [5,6,22]
+regularize_jacobians_weight: 0.5
+consistency_loss_weight: 0
+consistency_elev_filter: 30
+consistency_azim_filter: 20
+batch_size: 15
+train_res: 512
+resize_method: cubic
+# diffusion params
+target_weight: 2
+# Camera parameters
+fov_min: 30.0
+fov_max: 90.0
+dist_min: 2.5
+dist_max: 3.0
+light_power: 5.0
+elev_alpha: 1.0
+elev_beta: 5.0 
+elev_max: 60.0
+azim_min: 0.0
+azim_max: 360.0
+aug_loc: 1
+aug_light: 1
+aug_bkg: 1
+adapt_dist: 1
+
+log_interval: 5
+log_interval_im: 150
+log_elev: 30.0
+log_fov: 60.0
+log_dist: 3.0
+log_res: 512
+log_light_power: 3.0
+
+#textual inversion
+textual_inversion: true
+textual_inversion_neg: false
+#whether to train the textual inversion
+train: false
+train_neg: false
+img_dir: ./inversion_imgs/leatherback/
+load_emb: true
+load_emb_neg: false
+emb_path: embeddings/leatherback.py
+emb_path_neg: embeddings/spot.py
+token: that
+#token_neg: this
+token_neg: ""
+render_batch: 4
+from_checkpoint: false
+#learn texture map
+learn_texture: true
+texture_lr: 3e-3
+texture_weight: 10
+texture_burnin: 2400
+
+
+
+#diffusion
+#["M", "L", "XL"]
+#**always turn cpu_offload off for training dreambooth
+#turn on cpu_offload during inference to fit memory
+model_size: XL
+dtype: float16
+cpu_offload: true
+
+#dreambooth
+dreambooth: false
+train_db: false
+load_db: false
+ckpt_dir: /net/projects/ranalab/brian/ImageFusion/dreambooth/leatherback_noti
+ckpt_file: checkpoint-5000
+learn_token: sks
+use_titoken: false
+class_prompt: turtle
+style_prompt: ""
