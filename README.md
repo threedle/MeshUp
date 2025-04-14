@@ -107,6 +107,7 @@ You can either change the configuration file in configs/base_config.yml or check
 2) Code for local optimization
 
 ## Citation
+```
 @misc{kim2025meshupmultitargetmeshdeformation,
       title={MeshUp: Multi-Target Mesh Deformation via Blended Score Distillation}, 
       author={Hyunwoo Kim and Itai Lang and Noam Aigerman and Thibault Groueix and Vladimir G. Kim and Rana Hanocka},
@@ -116,4 +117,4 @@ You can either change the configuration file in configs/base_config.yml or check
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2408.14899}, 
 }
-
+```
