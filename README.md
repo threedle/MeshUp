@@ -101,7 +101,7 @@ You can check out the results in:
 - `{output_path}/images/` for rendered images  
 - `{output_path}/images/mesh_final/` for the exported mesh
 
-<img src="https://raw.githubusercontent.com/threedle/MeshUp/docs/data/hound_deformation.png" width="133px"/>
+<img src="https://raw.githubusercontent.com/threedle/MeshUp/docs/data/hound_deformation.png"/>
 
 ## Run your own examples
 You can either change the configuration file in configs/base_config.yml or check out the various command line arguments you can apply in main.py.
