@@ -1,0 +1,63 @@
+accum_iter: 2
+adapt_dist: 1
+attn_ctrl_alphas:
+- 0.6
+- 0.2
+- 0.2
+aug_bkg: 1
+aug_light: 1
+aug_loc: 0
+azim_max: 360.0
+azim_min: 0.0
+background:
+- 1.0
+- 1.0
+- 1.0
+batch_size: 8
+bsdf: diffuse
+config: ./configs/base_config.yml
+cpu_offload: false
+dist_max: 3.5
+dist_min: 2.5
+dtype: float16
+elev_alpha: 1.0
+elev_beta: 5.0
+elev_max: 60.0
+epochs: 2500
+fov_max: 90.0
+fov_min: 30.0
+gpu: 0
+guidance_scale: 100
+image_weight: 100.0
+invert_sel: 0
+light_power: 5.0
+local_def: 0
+local_sel: ./selection_configs/spot_head_vertices_faces.ply
+local_vert_face_sel: vert
+local_weight: false
+log: false
+log_dist: 3.0
+log_elev: 30.0
+log_fov: 60.0
+log_interval: 5
+log_interval_im: 150
+log_light_power: 3.0
+log_mesh: true
+log_res: 512
+lr: 0.0025
+mesh: ./meshes/hound.obj
+model_size: XL
+modified_cfg: false
+output_path: ./outputs/hippo0.6_frog0.2_dachshound0.2
+regularize_jacobians_weight: 50000
+resize_method: cubic
+retriangulate: 0
+score: ActvnReplace
+seed: 8888
+target_vertice: 171
+text_prompt:
+- a hippo
+- a frog
+- a dachshound
+- ''
+train_res: 512

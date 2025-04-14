@@ -35,8 +35,6 @@ from deepfloyd import DeepFloydGuidance
 from utilities.io import load_ply
 
 ################################################################################
-#                                  VISUALS                                     #
-################################################################################
 
 class Visualizer:
     def __init__(self, out_path: pathlib.Path, cfg: EasyDict, tb: SummaryWriter):
@@ -113,8 +111,7 @@ def loop(cfg):
     }[cfg.resize_method]
 
     # misc dirs
-    for d in ["tmp", "grads", cfg.ckpt_dir]:
-        os.makedirs(out_path / d, exist_ok=True)
+    os.makedirs(out_path / "tmp", exist_ok=True)
 
     ms = pymeshlab.MeshSet()
     ms.load_new_mesh(cfg.mesh)

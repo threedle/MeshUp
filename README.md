@@ -1,6 +1,6 @@
 # MeshUp
 
-*Hyunwoo Kim, [Itai Lang](https://itailang.github.io/), [Noam Aigerman](https://noamaig.github.io/), [Thibault Groueix](https://imagine.enpc.fr/~groueixt/), [Vladimir G. Kim](http://www.vovakim.com/), and [Rana Hanocka](https://people.cs.uchicago.edu/~ranahanocka/)*
+[Hyunwoo Kim](https://hywkim-brian.github.io/site/), [Itai Lang](https://itailang.github.io/), [Noam Aigerman](https://noamaig.github.io/), [Thibault Groueix](https://imagine.enpc.fr/~groueixt/), [Vladimir G. Kim](http://www.vovakim.com/), and [Rana Hanocka](https://people.cs.uchicago.edu/~ranahanocka/)*
 
 <a href="https://threedle.github.io/MeshUp/"><img src="https://img.shields.io/website?down_color=lightgrey&down_message=offline&label=Project%20Page&up_color=lightgreen&up_message=online&url=https%3A//threedle.github.io/MeshUp" height=22></a>
 <a href="https://arxiv.org/abs/2408.14899"><img src="https://img.shields.io/badge/arXiv-MeshUp-b31b1b.svg" height=22></a>
@@ -30,7 +30,7 @@ MeshUp is designed to enable flexible and intuitive deformation of 3D meshes. It
 
 - **Multi-target Deformations:** Simultaneously adapt regions of a mesh to different target concepts.
 - **Blended Score Distillation (BSD):** Leverage activations from multiple attention layers to guide mesh deformations.
-- **Local Control:** Use selectable vertices to precisely control where each concept is applied (To be released soon!)
+- **Local Control:** Use selectable vertices to precisely control where each concept is applied (To be within one week!)
 
 ## Tested Environment
 
@@ -106,6 +106,8 @@ You can either change the configuration file in configs/base_config.yml or check
 1) Code for memory optimization
 2) Code for local optimization
 
+## Acknowledgements
+This code base is originally based off of [TextDeformer](https://github.com/threedle/TextDeformer) and [NeuralJacobianFields](https://github.com/ThibaultGROUEIX/NeuralJacobianFields). Thanks to their awesome works!
 ## Citation
 ```
 @misc{kim2025meshupmultitargetmeshdeformation,

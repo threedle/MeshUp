@@ -66,6 +66,7 @@ log_mesh: true
 model_size: XL
 dtype: float16
 cpu_offload: false
+modified_cfg: false
 
 
 #local deformation -> tbd
