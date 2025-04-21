@@ -47,10 +47,6 @@ and activate it with:
 ```
 conda activate meshup
 ```
-Next install the required packages by running the install script. **Make sure to run this script with access to a GPU**.
-```
-bash ./install_environment.sh
-```
 first, make sure you have the correct pip version
 ```
 conda install pip=23.3.2
